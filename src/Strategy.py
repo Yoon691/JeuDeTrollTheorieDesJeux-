@@ -24,14 +24,14 @@ class PrudentStartegy(Strategy):
         # print('Play PrudentStartegy help.fill_table')
         probas, strat = help.PL_final(remaining_stones_player1, remaining_stones_player2,help.table)
         # print('Play PrudentStartegy proba, strat')
-        proba = random.uniform(0, 1)
+        # proba = random.uniform(0, 1)
         # print('Play PrudentStartegy proba')
-        print('proba : ', proba, 'probas : ', probas, 'strat : ', strat)
-        sum = 0
-        for i in range(len(probas)):
-            sum += probas[i]
-            if sum >= proba:
-                return strat[i]
+        print( 'probas : ', probas, 'strat : ', strat)
+        # sum = 0
+        # for i in range(len(probas)):
+        #     sum += probas[i]
+        #     if sum >= proba:
+        #         return strat[i]
         return 1
 
 class DivStartegy(Strategy):

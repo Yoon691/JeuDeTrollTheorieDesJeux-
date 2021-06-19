@@ -58,8 +58,10 @@ class Game:
 
     def game_round(self):
         print("Troll position avant: ", self.troll.getPostion())
+        print('picked_stones_player_1')
         picked_stones_player_1 = self.player_1.executeStrategy(
             int(self.troll.getPostion()), self.player_2.get_stones())
+        print('picked_stones_player_2')
         picked_stones_player_2 = self.player_2.executeStrategy(
             int(self.troll.getPostion()), self.player_1.get_stones())
         print("Player 1: ", picked_stones_player_1, " - Player 2: ",
