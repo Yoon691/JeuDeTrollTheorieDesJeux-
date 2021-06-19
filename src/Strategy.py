@@ -26,17 +26,20 @@ class PrudentStartegy(Strategy):
         # print('Play PrudentStartegy proba, strat')
         # proba = random.uniform(0, 1)
         # print('Play PrudentStartegy proba')
-        print( 'probas : ', probas, 'strat : ', strat)
+        print('probas : ', probas, 'strat : ', strat)
         # sum = 0
         # for i in range(len(probas)):
         #     sum += probas[i]
+        #     print('sum', sum)
         #     if sum >= proba:
+        #         print('strat[i]', i, ':', strat[i])
         #         return strat[i]
         return 1
 
 class DivStartegy(Strategy):
     def __init__(self):
         self.name = "Division Strategy"
+        self.cache = {}
     @staticmethod
     def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
         if remaining_stones == 1:
@@ -51,6 +54,7 @@ class DivStartegy(Strategy):
 class RandomStartegy(Strategy):
     def __init__(self):
         self.name = "Random Strategy"
+        self.cache = {}
     @staticmethod
     def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
         value = random.randrange(1, remaining_stones + 1)
@@ -59,6 +63,7 @@ class RandomStartegy(Strategy):
 class HumanStartegy(Strategy):
     def __init__(self):
         self.name = "Human Strategy"
+        self.cache = {}
     @staticmethod
     def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
         print("pierres restantes : ", remaining_stones)
@@ -69,6 +74,7 @@ class HumanStartegy(Strategy):
 class Random2Startegy(Strategy):
     def __init__(self):
         self.name = "Random div 2 Strategy"
+        self.cache = {}
     @staticmethod
     def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
         if remaining_stones % 2 == 0:
@@ -82,6 +88,7 @@ class PlusDivStartegy(Strategy):
     def __init__(self):
         self.first = True
         self.name = "Plus Division Strategy"
+        self.cache = {}
     @staticmethod
     def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
         if self.first:

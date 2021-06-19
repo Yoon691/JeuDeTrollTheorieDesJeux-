@@ -3,7 +3,7 @@ def main():
     p1 = 0
     p2 = 0
     nul = 0
-    nb = 10
+    nb = 100
     cacheJ1 = None
     cacheJ2 = None
     for i in range(nb):
@@ -26,10 +26,10 @@ def main():
         print('Fin partie n : ', i + 1)
         if game.player_1.strategy.cache is not None :
           cacheJ1 = game.player_1.strategy.cache
-          print('cacheJ1 Fin partie : ', cacheJ1)
+          # print('cacheJ1 Fin partie : ', cacheJ1)
         if game.player_2.strategy.cache is not None :
           cacheJ2 = game.player_1.strategy.cache
-          print('cacheJ2 Fin paritie : ', cacheJ2)
+          # print('cacheJ2 Fin paritie : ', cacheJ2)
     print('resultat de councour')
     print(p1/nb," - ", nul/nb, " - ", p2/nb)
 

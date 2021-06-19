@@ -9,10 +9,10 @@ class Game:
         self.grid_size = grid_size
         self.init_stones = init_stones
         self.player_1 = Player(-(self.grid_size - 1) / 2, init_stones,
-                               PrudentStartegy())
+                               Random2Startegy())
         self.player_2 = Player((self.grid_size - 1) / 2, init_stones,
-                               PrudentStartegy())
-        print('Strategic player 1 :', str(self.player_1.getStrategy()), 'VS', 'Strategic player 2', str(self.player_2.getStrategy()))
+                               DivStartegy())
+        print('Strategic player 1 :', self.player_1.strategy.name, 'VS', 'Strategic player 2 : ', self.player_2.strategy.name)
         self.troll = Troll(0)
 
     def start_game(self):
