@@ -198,14 +198,13 @@ class Helpers:
         my_lp_problem += constraint == 1
         # print(my_lp_problem)
         my_lp_problem.solve(pulp.PULP_CBC_CMD(msg=0))
-        # for variable in my_lp_problem.variables():
-        #    print("{} = {}".format(variable.name, variable.varValue))
+     
         return pulp.value(my_lp_problem.objective)
         
     def PL_final(self,p1,p2,matr):
-        print('matr PL_Final : ', matr)
+        #print('matr PL_Final : ', matr)
         initial, strat = self.eliminate_dominated_strategy(p1, p2, matr)
-        print('initial Pl_final : ', initial)
+        #print('initial Pl_final : ', initial)
         A = initial.transpose()
         my_lp_problem = pulp.LpProblem("MyLPProblem", pulp.LpMaximize)
         char = 97
@@ -227,49 +226,9 @@ class Helpers:
         for var in variables[:len(variables) - 1]:
             constraint += var
         my_lp_problem += constraint == 1
-        # print(my_lp_problem)
+       
         my_lp_problem.solve(pulp.PULP_CBC_CMD(msg=0))
         for variable in my_lp_problem.variables()[:len(initial)]:
            self.probas.append(variable.varValue)
-        # print(self.probas)
-        # print(strat)
+        
         return self.probas, strat
-
-    # def stttt():
-        # if p1 == 1 and p2 == 2: 
-            # print("départ", initial)
-        # # c = [0, 0, 0, 0, -1]
-        # # c = [0, 0, 0, 0, -1]
-            # print(len(initial))
-        # c = np.zeros(len(initial))
-        # c = np.append(c, [-1])
-        # if p1 == 1 and p2 == 2: 
-            # print(c)
-        # # A = [[0, 0, -1, -1, -1], [-1, 0, 0, -1, -1], [-1, -1,  0, 0, -1]]
-        # A = initial.transpose()
-        # if p1 == 1 and p2 == 2: 
-            # print(A)
-        # A = np.insert(A, len(A[0]) , 1, axis=1)
-        # # print("before",A)
-        # A = A * -1
-        # # print("after",A)
-        # constrainte_count = len(A) 
-        # # b = [0, 0, 0]
-        # b = np.zeros(constrainte_count)
-        # # A_eq = [[1, 1, 1, 1, 0]]
-        # A_eq = np.ones((1,len(initial)))
-        # A_eq = np.insert(A_eq, len(A_eq[0]) , 0, axis=1)
-        # #print("Aeq",A_eq)
-        # #print("A",A)
-        # #print('b',b)
-        # b_eq = [1]
-        # res = linprog(c, A_ub=A, b_ub=b, A_eq=A_eq, b_eq=b_eq)
-        # # print(round(-res.x[-1],2))
-        # return round(-res.x[-1],2)
-
-#a = 3
-#b = 3
-#c = 0
-#help = Helpers(a,b,c)
-#help.fill_table()
-#print(help.PL_final( a,b,help.table))

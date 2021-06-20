@@ -36,20 +36,6 @@ class PrudentStartegy(Strategy):
         #         return strat[i]
         return 1
 
-class DivStartegy(Strategy):
-    def __init__(self):
-        self.name = "Division Strategy"
-        self.cache = {}
-    @staticmethod
-    def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
-        if remaining_stones == 1:
-            return 1
-        if remaining_stones % 2 == 0:
-            value = int(remaining_stones / 2)
-        else:
-            value = int((remaining_stones - 1) / 2)
-        return value
-
 
 class RandomStartegy(Strategy):
     def __init__(self):
@@ -83,38 +69,3 @@ class Random2Startegy(Strategy):
             value = random.randrange(1, int((remaining_stones + 1) / 2 + 1))
         return value
 
-
-class PlusDivStartegy(Strategy):
-    def __init__(self):
-        self.first = True
-        self.name = "Plus Division Strategy"
-        self.cache = {}
-    @staticmethod
-    def play(self, remaining_stones,remaining_stones_player2, troll_position, player_position):
-        if self.first:
-            self.first = False
-            self.prev_position = troll_position
-            if remaining_stones % 2 == 0:
-                self.value = random.randrange(1,
-                                              int((remaining_stones / 2) + 1))
-            else:
-                self.value = random.randrange(
-                    1, int((remaining_stones + 1) / 2 + 1))
-        else:
-            prev_dist = abs(self.prev_position - player_position)
-            new_dist = abs(troll_position - player_position)
-            if prev_dist <= new_dist:
-                if self.value % 2 == 0:
-                    self.value = int(self.value / 2)
-                else:
-                    self.value = int((self.value + 1) / 2)
-            else:
-                if self.value + 1 >= remaining_stones:
-                    if self.value % 2 == 0:
-                        self.value = int(self.value / 2)
-                    else:
-                        self.value = int((self.value + 1) / 2)
-                else:
-                    self.value += 1
-
-        return self.value
