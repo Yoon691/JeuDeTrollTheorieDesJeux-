@@ -3,7 +3,7 @@ def main():
     p1 = 0
     p2 = 0
     nul = 0
-    nb = 100
+    nb = 1
     cacheJ1 = None
     cacheJ2 = None
     for i in range(nb):
